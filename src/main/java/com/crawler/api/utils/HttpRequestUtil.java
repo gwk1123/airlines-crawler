@@ -232,7 +232,7 @@ public class HttpRequestUtil {
      * @return
      * @throws JsonProcessingException
      */
-    public static String searchAQContent(GDSSearchRequestDTO gdsSearchRequestDTO) throws JsonProcessingException {
+    public static String searchAQContent(GDSSearchRequestDTO gdsSearchRequestDTO) {
         CloseableHttpResponse response = null;
         String result = "";
         //可以测通
@@ -255,6 +255,7 @@ public class HttpRequestUtil {
         }
 
         try {
+            logger.info("---->{}",url);
             HttpGet httpGet = new HttpGet(url);
             RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(20000).setConnectionRequestTimeout(20000).setSocketTimeout(20000).build();
             httpGet.setConfig(requestConfig);

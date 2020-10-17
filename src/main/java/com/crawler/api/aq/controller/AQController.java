@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/aq")
+@RequestMapping(value = "/api/aq")
 public class AQController {
 
     private Logger logger= LoggerFactory.getLogger(AQController.class);
@@ -41,7 +44,8 @@ public class AQController {
     }
 
     @RequestMapping(value = "/search")
-    public String search(@RequestBody GDSSearchRequestDTO gdsSearchRequestDTO) throws JsonProcessingException {
+    public String search(@RequestBody GDSSearchRequestDTO gdsSearchRequestDTO) throws JsonProcessingException, ParseException {
+        transformRequest( gdsSearchRequestDTO);
         return HttpRequestUtil.searchAQContent(gdsSearchRequestDTO);
     }
 
@@ -59,6 +63,20 @@ public class AQController {
         flightConditions.add(flightCondition);
         aqRequest.setFlightCondition(flightConditions);
         return aqRequest;
+    }
+
+    public void transformRequest(GDSSearchRequestDTO gdsSearchRequestDTO) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        Date fromDate = formatter.parse(gdsSearchRequestDTO.getFromDate());
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        String fromDateStr = ft.format(fromDate);
+        if("2".equals(gdsSearchRequestDTO.getTripType())) {
+            Date rtDate = formatter.parse(gdsSearchRequestDTO.getRetDate());
+            String rtDateStr = ft.format(rtDate);
+            gdsSearchRequestDTO.setRetDate(rtDateStr);
+        }
+
+        gdsSearchRequestDTO.setFromDate(fromDateStr);
     }
 
 }
