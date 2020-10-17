@@ -234,10 +234,6 @@ public class HttpRequestUtil {
     public static String searchAQContent(GDSSearchRequestDTO gdsSearchRequestDTO) throws JsonProcessingException {
         CloseableHttpResponse response = null;
         String result = "";
-        long t3 = 0;
-        long t0 =  System.currentTimeMillis();
-        logger.info("t0--->{}", t0);
-        ObjectMapper objectMapper = new ObjectMapper();
         //返往需要另做处理
         String rtUrl = "http://www.9air.com/shop/api/shopping/b2c/searchflight?" +
                 "language=zh_CN&currency=CNY&" +
@@ -260,21 +256,14 @@ public class HttpRequestUtil {
             httpGet.addHeader("Content-type", "application/json;charset=UTF-8");
             httpGet.setHeader("Accept", "application/json, text/plain, */*");
             httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36");
-            long t1 =  System.currentTimeMillis();
-            logger.info("t1--->{}", t1);
             response = httpClient.execute(httpGet);
             long t2 =  System.currentTimeMillis();
-            logger.info("t2--->{}", t2);
-            logger.info("t12---->{}",(t2-t1)/1000);
             // 从响应模型中获取响应实体
             HttpEntity responseEntity = response.getEntity();
             if (responseEntity != null) {
                 result = EntityUtils.toString(responseEntity);
                 logger.info("--->{}",result);
             }
-             t3 =  System.currentTimeMillis();
-            logger.info("t3--->{}", t3);
-            logger.info("t23---->{}",(t3-t2)/1000);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -286,9 +275,6 @@ public class HttpRequestUtil {
                 e.printStackTrace();
             }
         }
-        long t4 =  System.currentTimeMillis();
-        logger.info("t4--->{}", t4);
-        logger.info("t34---->{}",(t4-t3)/1000);
         return result;
 
     }
