@@ -32,6 +32,7 @@ import java.nio.charset.Charset;
  * 接口调用工具类
  */
 public class HttpRequestUtil {
+    private static final String TRIP_TYPE_OW = "1";
     private static CloseableHttpClient httpClient;
     private static Logger logger = LoggerFactory.getLogger(HttpRequestUtil.class);
 
@@ -234,30 +235,33 @@ public class HttpRequestUtil {
     public static String searchAQContent(GDSSearchRequestDTO gdsSearchRequestDTO) throws JsonProcessingException {
         CloseableHttpResponse response = null;
         String result = "";
-        //返往需要另做处理
-        String rtUrl = "http://www.9air.com/shop/api/shopping/b2c/searchflight?" +
-                "language=zh_CN&currency=CNY&" +
-                "flightCondition=index:1;depCode:CAN;arrCode:KWE;depDate:2020-12-01;depCodeType:CITY;arrCodeType:CITY;&" +
-                "flightCondition=index:0;depCode:KWE;arrCode:CAN;depDate:2020-11-26;depCodeType:CITY;arrCodeType:CITY;" +
-                "&channelNo=B2C&tripType=RT&groupIndicator=I&adultCount=1&childCount=0&infantCount=0&airlineCode=&directType=&cabinClass=&taxFee=&taxCurrency=&promotionCode=";
-
         //可以测通
         String urlTest = "http://www.9air.com/shop/api/shopping/b2c/searchflight?language=zh_CN&currency=CNY&" +
                 "flightCondition=index:0;depCode:CAN;arrCode:KWE;depDate:2021-02-16;depCodeType:CITY;arrCodeType:CITY;" +
                 "&channelNo=B2C&tripType=OW&groupIndicator=I&adultCount=1&childCount=0&infantCount=0&airlineCode=&directType=&cabinClass=&taxFee=&taxCurrency=&promotionCode=";
 
-        String url = "http://www.9air.com/shop/api/shopping/b2c/searchflight?language=zh_CN&currency=CNY&" +
-                "flightCondition=index:0;depCode:" + gdsSearchRequestDTO.getFromCity() + ";arrCode:" + gdsSearchRequestDTO.getToCity() + ";depDate:" + gdsSearchRequestDTO.getFromDate() + ";depCodeType:CITY;arrCodeType:CITY;" +
-                "&channelNo=B2C&tripType=OW&groupIndicator=I&adultCount=" + gdsSearchRequestDTO.getAdultNumber() + "&childCount=" + gdsSearchRequestDTO.getChildNumber() + "&infantCount=" + gdsSearchRequestDTO.getInfantNumber() + "&airlineCode=&directType=&cabinClass=&taxFee=&taxCurrency=&promotionCode=";
+        String url ="";
+        if(TRIP_TYPE_OW.equals(gdsSearchRequestDTO.getTripType())){
+            url = "http://www.9air.com/shop/api/shopping/b2c/searchflight?language=zh_CN&currency=CNY&" +
+                    "flightCondition=index:0;depCode:" + gdsSearchRequestDTO.getFromCity() + ";arrCode:" + gdsSearchRequestDTO.getToCity() + ";depDate:" + gdsSearchRequestDTO.getFromDate() + ";depCodeType:CITY;arrCodeType:CITY;" +
+                    "&channelNo=B2C&tripType=OW&groupIndicator=I&adultCount=" + gdsSearchRequestDTO.getAdultNumber() + "&childCount=" + gdsSearchRequestDTO.getChildNumber() + "&infantCount=" + gdsSearchRequestDTO.getInfantNumber() + "&airlineCode=&directType=&cabinClass=&taxFee=&taxCurrency=&promotionCode=";
+        }else {
+            //返往需要另做处理
+            url = "http://www.9air.com/shop/api/shopping/b2c/searchflight?" +
+                    "language=zh_CN&currency=CNY&" +
+                    "flightCondition=index:1;depCode:"+gdsSearchRequestDTO.getToCity()+";arrCode:"+gdsSearchRequestDTO.getFromCity()+";depDate:"+gdsSearchRequestDTO.getRetDate()+";depCodeType:CITY;arrCodeType:CITY;&" +
+                    "flightCondition=index:0;depCode:"+gdsSearchRequestDTO.getFromCity()+";arrCode:"+gdsSearchRequestDTO.getToCity()+";depDate:"+gdsSearchRequestDTO.getFromDate()+";depCodeType:CITY;arrCodeType:CITY;" +
+                    "&channelNo=B2C&tripType=RT&groupIndicator=I&adultCount=1&childCount=0&infantCount=0&airlineCode=&directType=&cabinClass=&taxFee=&taxCurrency=&promotionCode=";
+        }
+
         try {
-            HttpGet httpGet = new HttpGet(rtUrl);
+            HttpGet httpGet = new HttpGet(url);
             RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(20000).setConnectionRequestTimeout(20000).setSocketTimeout(20000).build();
             httpGet.setConfig(requestConfig);
             httpGet.addHeader("Content-type", "application/json;charset=UTF-8");
             httpGet.setHeader("Accept", "application/json, text/plain, */*");
             httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36");
             response = httpClient.execute(httpGet);
-            long t2 =  System.currentTimeMillis();
             // 从响应模型中获取响应实体
             HttpEntity responseEntity = response.getEntity();
             if (responseEntity != null) {
