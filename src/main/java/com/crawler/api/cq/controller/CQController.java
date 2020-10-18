@@ -123,7 +123,7 @@ public class CQController {
     }
 
 
-    public Segment transformFlightNumber(Route route,String flightIndicator,int itemNumber){
+    public Segment transformFlightNumber(Route route, String flightIndicator, int itemNumber){
         Segment segment =new Segment();
         segment.setFlightIndicator(flightIndicator);
         segment.setItemNumber(itemNumber);

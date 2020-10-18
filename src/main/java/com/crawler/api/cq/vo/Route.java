@@ -1,6 +1,3 @@
-/**
-  * Copyright 2020 bejson.com
-  */
 package com.crawler.api.cq.vo;
 import java.util.List;
 
@@ -30,7 +27,7 @@ public class Route {
     private int RouteSegType;
     private String ActId;
     private List<String> Stopovers;
-    private List<AircraftCabins> AircraftCabins;
+    private List<AircraftCabins> aircraftCabins;
     private int RouteTotalTax;
     private String UMMsg;
     private int SpringPassDiscount;
@@ -197,12 +194,13 @@ public class Route {
          return Stopovers;
      }
 
-    public void setAircraftCabins(List<AircraftCabins> AircraftCabins) {
-         this.AircraftCabins = AircraftCabins;
-     }
-     public List<AircraftCabins> getAircraftCabins() {
-         return AircraftCabins;
-     }
+    public List<AircraftCabins> getAircraftCabins() {
+        return aircraftCabins;
+    }
+
+    public void setAircraftCabins(List<AircraftCabins> aircraftCabins) {
+        this.aircraftCabins = aircraftCabins;
+    }
 
     public void setRouteTotalTax(int RouteTotalTax) {
          this.RouteTotalTax = RouteTotalTax;

@@ -1,6 +1,3 @@
-/**
-  * Copyright 2020 bejson.com
-  */
 package com.crawler.api.aq.vo;
 import java.util.Date;
 import java.util.List;
@@ -15,13 +12,13 @@ public class Segments {
 
     private int segId;
     private int tripId;
-    private Date departDate;
+    private String departDate;
     private String departTime;
     private String departCityName;
     private String departAirportName;
     private String departAirportCode;
     private String departTerminal;
-    private Date arrivalDate;
+    private String arrivalDate;
     private String arrivalTime;
     private String arrivalCityName;
     private String arrivalAirportName;
@@ -68,13 +65,6 @@ public class Segments {
          return tripId;
      }
 
-    public void setDepartDate(Date departDate) {
-         this.departDate = departDate;
-     }
-     public Date getDepartDate() {
-         return departDate;
-     }
-
     public void setDepartTime(String departTime) {
          this.departTime = departTime;
      }
@@ -110,12 +100,49 @@ public class Segments {
          return departTerminal;
      }
 
-    public void setArrivalDate(Date arrivalDate) {
-         this.arrivalDate = arrivalDate;
-     }
-     public Date getArrivalDate() {
-         return arrivalDate;
-     }
+    public String getDepartDate() {
+        return departDate;
+    }
+
+    public void setDepartDate(String departDate) {
+        this.departDate = departDate;
+    }
+
+    public String getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(String arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    public boolean isInter() {
+        return inter;
+    }
+
+    public boolean isNorthern() {
+        return northern;
+    }
+
+    public boolean isDepartInter() {
+        return departInter;
+    }
+
+    public boolean isArrivalInter() {
+        return arrivalInter;
+    }
+
+    public boolean isCodeShare() {
+        return codeShare;
+    }
+
+    public String gettSalesPromotion() {
+        return tSalesPromotion;
+    }
+
+    public void settSalesPromotion(String tSalesPromotion) {
+        this.tSalesPromotion = tSalesPromotion;
+    }
 
     public void setArrivalTime(String arrivalTime) {
          this.arrivalTime = arrivalTime;

@@ -16,7 +16,7 @@ public class Fares {
     private String subClass;
     private String currency;
     private int price;
-    private int ticketPrice;
+    private String ticketPrice;
     private int taxPrice;
     private int priceBasis;
     private String ticketLack;
@@ -63,12 +63,13 @@ public class Fares {
          return price;
      }
 
-    public void setTicketPrice(int ticketPrice) {
-         this.ticketPrice = ticketPrice;
-     }
-     public int getTicketPrice() {
-         return ticketPrice;
-     }
+    public String getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(String ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
 
     public void setTaxPrice(int taxPrice) {
          this.taxPrice = taxPrice;

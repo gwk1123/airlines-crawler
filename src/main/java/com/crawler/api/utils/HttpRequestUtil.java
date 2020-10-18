@@ -1,7 +1,9 @@
 package com.crawler.api.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.crawler.api.aq.vo.AQRequest;
+import com.crawler.api.aq.vo.AQResponse;
 import com.crawler.api.cq.vo.CQRequest;
 import com.crawler.api.cq.vo.CQResponse;
 import com.crawler.api.nh.vo.NHRequest;
@@ -232,7 +234,7 @@ public class HttpRequestUtil {
      * @return
      * @throws JsonProcessingException
      */
-    public static String searchAQContent(GDSSearchRequestDTO gdsSearchRequestDTO) {
+    public static AQResponse searchAQContent(GDSSearchRequestDTO gdsSearchRequestDTO) {
         CloseableHttpResponse response = null;
         String result = "";
         //可以测通
@@ -254,6 +256,7 @@ public class HttpRequestUtil {
                     "&channelNo=B2C&tripType=RT&groupIndicator=I&adultCount=1&childCount=0&infantCount=0&airlineCode=&directType=&cabinClass=&taxFee=&taxCurrency=&promotionCode=";
         }
 
+        AQResponse aqResponse = null;
         try {
             logger.info("---->{}",url);
             HttpGet httpGet = new HttpGet(url);
@@ -268,6 +271,7 @@ public class HttpRequestUtil {
             if (responseEntity != null) {
                 result = EntityUtils.toString(responseEntity);
                 logger.info("--->{}",result);
+                aqResponse = JSON.parseObject(result,AQResponse.class);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -280,8 +284,7 @@ public class HttpRequestUtil {
                 e.printStackTrace();
             }
         }
-        return result;
-
+        return aqResponse;
     }
 
 

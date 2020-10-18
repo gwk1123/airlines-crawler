@@ -1,6 +1,3 @@
-/**
-  * Copyright 2020 bejson.com
-  */
 package com.crawler.api.cq.vo;
 import java.util.List;
 
@@ -15,7 +12,7 @@ public class AircraftCabins {
     private int CabinLevel;
     private boolean IsVipLine;
     private String CabinLevelName;
-    private List<AircraftCabinInfos> AircraftCabinInfos;
+    private List<AircraftCabinInfos> aircraftCabinInfos;
     private List<String> Guest;
     private boolean IsJC;
     private boolean IsActivity;
@@ -50,12 +47,49 @@ public class AircraftCabins {
          return CabinLevelName;
      }
 
-    public void setAircraftCabinInfos(List<AircraftCabinInfos> AircraftCabinInfos) {
-         this.AircraftCabinInfos = AircraftCabinInfos;
-     }
-     public List<AircraftCabinInfos> getAircraftCabinInfos() {
-         return AircraftCabinInfos;
-     }
+    public boolean isVipLine() {
+        return IsVipLine;
+    }
+
+    public void setVipLine(boolean vipLine) {
+        IsVipLine = vipLine;
+    }
+
+    public List<AircraftCabinInfos> getAircraftCabinInfos() {
+        return aircraftCabinInfos;
+    }
+
+    public void setAircraftCabinInfos(List<AircraftCabinInfos> aircraftCabinInfos) {
+        this.aircraftCabinInfos = aircraftCabinInfos;
+    }
+
+    public boolean isJC() {
+        return IsJC;
+    }
+
+    public void setJC(boolean JC) {
+        IsJC = JC;
+    }
+
+    public boolean isActivity() {
+        return IsActivity;
+    }
+
+    public void setActivity(boolean activity) {
+        IsActivity = activity;
+    }
+
+    public boolean isCanbuyAccidentInsurance() {
+        return CanbuyAccidentInsurance;
+    }
+
+    public boolean isEnableBaggagePolicy2019() {
+        return IsEnableBaggagePolicy2019;
+    }
+
+    public void setEnableBaggagePolicy2019(boolean enableBaggagePolicy2019) {
+        IsEnableBaggagePolicy2019 = enableBaggagePolicy2019;
+    }
 
     public void setGuest(List<String> Guest) {
          this.Guest = Guest;
