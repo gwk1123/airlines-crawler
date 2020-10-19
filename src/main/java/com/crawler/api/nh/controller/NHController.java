@@ -1,5 +1,6 @@
 package com.crawler.api.nh.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.crawler.api.aysc.CompletableFutureCollector;
 import com.crawler.api.nh.vo.*;
@@ -41,7 +42,7 @@ public class NHController {
     public GDSSearchResponseDTO searchNH(@RequestBody GDSSearchRequestDTO gdsSearchRequestDTO) throws JsonProcessingException {
 
         NHRequest nhRequest=transformSrarchRequest(gdsSearchRequestDTO);
-
+        logger.info("nhRequest:{}", JSON.toJSONString(nhRequest));
         List<CompletableFuture<GDSSearchResponseDTO>> requestGDSByOfficeIdFutures = new ArrayList<>();
         requestGDSByOfficeIdFutures.add(CompletableFuture.supplyAsync(() -> {
             return searchNHDirect(nhRequest);
