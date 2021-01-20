@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.crawler.api</groupId>
-    <artifactId>crawler</artifactId>
+    <artifactId>airlines-crawler</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>airlines-crawler</name>
     <description>Demo project for Spring Boot</description>
