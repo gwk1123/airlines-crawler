@@ -143,6 +143,7 @@ public class AQController {
             List<Segment> segments=new ArrayList<>();
             segments.add(segment);
             routing.setFromSegments(segments);
+            routing.setValidatingCarrier(routing.getFromSegments().get(0).getCarrier());
             routing.setRetSegments(new ArrayList<>());
             routings.add(routing);
         });
