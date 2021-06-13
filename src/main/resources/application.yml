@@ -1,5 +1,5 @@
 server:
-  port: 8086
+  port: 19086
 eureka:
   client:
     serviceUrl: #注册中心的注册地址
