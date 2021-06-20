@@ -90,7 +90,6 @@ public class CQController {
             routing.setValidatingCarrier(segment.getCarrier());
             routing.setFromSegments(new ArrayList<Segment>(){{add(segment);}});
             routing.setRetSegments(new ArrayList<>());
-            routing.setCurrency("CNY");
             routing.setAdultPrice(new BigDecimal(routes.get(0).getMinCabinPriceForDisplay()));
             routing.setAdultTax(new BigDecimal("0"));
             routing.setChildPrice(routing.getAdultPrice());
@@ -106,7 +105,6 @@ public class CQController {
                 Segment segment1 = this.transformFlightNumber(routes.get(i),String.valueOf("2"),1);
                 routing.setFromSegments(new ArrayList<Segment>(){{add(segment);add(segment1);}});
                 routing.setRetSegments(new ArrayList<>());
-                routing.setCurrency("CNY");
                 routing.setAdultPrice(new BigDecimal(routes.get(0).getMinCabinPriceForDisplay()));
                 routing.setProductType("PRV");
                 routing.setReservationType(gdsSearchRequestDTO.getReservationType());
@@ -116,6 +114,7 @@ public class CQController {
                 routing.setAdultTax(new BigDecimal("0"));
                 routing.setChildPrice(routing.getAdultPrice());
                 routing.setChildTax(routing.getAdultTax());
+                routing.setValidatingCarrier(segment.getCarrier());
                 routings.add(routing);
             }
         }
