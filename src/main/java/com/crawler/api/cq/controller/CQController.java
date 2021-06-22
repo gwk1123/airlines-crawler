@@ -102,7 +102,7 @@ public class CQController {
             for(int i=1;i<routes.size();i++){
                 Routing routing =new Routing();
                 Segment segment = this.transformFlightNumber(routes.get(0),"1",1);
-                Segment segment1 = this.transformFlightNumber(routes.get(i),String.valueOf("2"),1);
+                Segment segment1 = this.transformFlightNumber(routes.get(i),String.valueOf("1"),1);
                 routing.setFromSegments(new ArrayList<Segment>(){{add(segment);add(segment1);}});
                 routing.setRetSegments(new ArrayList<>());
                 routing.setAdultPrice(new BigDecimal(routes.get(0).getMinCabinPriceForDisplay()));

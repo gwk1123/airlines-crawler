@@ -137,7 +137,6 @@ public class AQController {
             routing.setChildTax(tax);
             routing.setInfantsTax(tax);
             routing.setProductType("PRV");
-            routing.setCurrency("CNY");
             routing.setReservationType(gdsSearchRequestDTO.getReservationType());
             routing.setOfficeId(gdsSearchRequestDTO.getOfficeId());
             List<Segment> segments=new ArrayList<>();
