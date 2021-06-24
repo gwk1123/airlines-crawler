@@ -90,12 +90,8 @@ public class HttpRequestUtil {
             RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(20000).setConnectionRequestTimeout(200000).setSocketTimeout(200000).
                     setRedirectsEnabled(false).build();
             httpPost.setConfig(requestConfig);
-            httpPost.addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8");
+            httpPost.addHeader("Content-type", "application/json; charset=utf-8");
             httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0)");
-
-            httpPost.addHeader("Cookie", "_os=ff08ef99dd88107fb19f42ac0fe919bd; PcPopAd_VisitWebSite=2020-09-21 17:54:28; c3=www.baidu.com; c4=; s7=https://www.baidu.com/link?url=KjGEgYUkaoqgNXdoyKL2ceXwLPsQpyJDKOQ54nf0wn3&wd=&eqid=a2a04c290002d758000000065f687853; RiskifiedToken=16997fc9859f4bd5a137e092c6b6d035; g_refresh=0; cookie_policy=1; smidV2=20200921175429c4f8ac93dec16990ceaa3e0df94e8e3b001eb6e65dbba4c20; PcPopAd_GQF1599448430705=; rskxRunCookie=0; rCookie=5kjkk1fzrvypeg80be9fy9kfccryrb; Qs_lvt_100645=1600682071; s1=Win7; s2=WEB; s3=zh-cn; s4=ab4eb62abe6b4b72b4deb2cbde932dc0; s6=6fcede43fc034a1e9eba4fded52c608b; preloadJs=.js%3Fvs%3Dv2020091601; hasProcessIP=1; Hm_lvt_f6066c7da67b0ae5719a9fa8c6e004a8=1600682073; gr_user_id=c200c7cc-c2ce-49e4-bd5b-9e5f95380764; 9683d26dac59f3e8_gr_session_id=e4376a58-35f7-4368-b1d0-88210b7ff856; 9683d26dac59f3e8_gr_session_id_e4376a58-35f7-4368-b1d0-88210b7ff856=true; grwng_uid=1a029e90-48ef-4bad-bc23-f849082e083f; acw_tc=2f624a2a16006820892294088e3c5b3ef96cfbdaa25112bae0d8f8a9ca5268; IsShowTaxprice=false; mediav=%7B%22eid%22%3A%22194066%22%2C%22ep%22%3A%22%22%2C%22vid%22%3A%22%22%2C%22ctn%22%3A%22%22%2C%22vvid%22%3A%22%22%2C%22_mvnf%22%3A1%2C%22_mvctn%22%3A0%2C%22_mvck%22%3A1%2C%22_refnf%22%3A0%7D; SearchHis=zh-cn%26SZX%26%u6DF1%u5733%26SIA%26%u897F%u5B89%262020-10-21%26%26SZX%26SIA%26false%26false; Hm_lpvt_f6066c7da67b0ae5719a9fa8c6e004a8=1600682182; Qs_pv_100645=3452390885972331000%2C4002146624442403300%2C2279809347355212500%2C1777163299099279000%2C3899374334191683600; shumei_device_id=WHJMrwNw1k%2FEx1XMOL3qsQDgtn5tgkWbTjrmEJh61fb%2BxPVKP%2FTCSVs5GIv2yvpotMUVD7t03AothXAhXXhoNKFfJVsuKWKogvZwXnA6wGGcTv06okQ1koYYHqxuZPWulBJ7HANruhDjgssVEtOEyiJGebD4P9188MdzVDzvFXj%2FC2CT6C1Ms%2BDlzR%2BLE4%2FRNKei9dcuNh8gYjh0R4kbUwMc116kP%2BBdVLmmGufafk2I2kNF0emrW7G7v4vlHZoQZ1487582755342; s5=5; lastRskxRun=1600682208535");
-
             httpPost.setEntity(new StringEntity(jsonString, Charset.forName("UTF-8")));
 
             response = httpClient.execute(httpPost);
