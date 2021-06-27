@@ -79,16 +79,6 @@ public class GDSSearchRequestDTO {
     //飞行类型1：含中转含直飞2：仅仅中转3：仅直飞
     private Integer flightType;
 
-    //目前是以港币
-    private String currency;
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
 
     public Integer getFlightType() {
         return flightType;

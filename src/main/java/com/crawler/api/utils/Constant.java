@@ -10,5 +10,11 @@ public class Constant {
     //获取订单详情
     public static String GET_ORDER_INFO="http://域名地址/app/api/interface.php";
 
+    //search请求
+    public static String SEARCH_URL="http://域名地址/app/api/interface.php";
+
+    //search请求
+    public static String VERFIY_URL="http://域名地址/app/api/interface.php";
+
 
 }

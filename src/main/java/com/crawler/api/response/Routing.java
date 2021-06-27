@@ -26,17 +26,15 @@ public class Routing implements Serializable {
     private BigDecimal infantsPrice;
     private BigDecimal infantsTax;
 
-    //汇率
-    private BigDecimal exchange;
     private String eligibility;
     private String nationality;
     private String forbiddenNationality;
-    private int priceType;
+    private String priceType; //运价类型: pub pri
     private int applyType;
     private int adultTaxType;
     private int childTaxType;
     private String reservationType;
-    private String productType;
+    private String productType; //普通 k位
     private String officeId;
 
     private String minStay;
@@ -51,58 +49,77 @@ public class Routing implements Serializable {
     private List<Segment> retSegments;
     private String pricingMethod;
 
-    //LCC的flightId
-    private String flightId;
+    private String adultAirportTax; //成人机场建设费
+    private String childAirportTax; //儿童机场建设费
+    private String eTicket; //电子客票标示
+    private String meal; //餐食
+    private String adultFuelCosts; //燃油费
+    private String childFuelCosts; //儿童燃油费
+    private String kilometers; //公里数
+    private String economyStandardPrice; //经济舱标准价
 
-    //LCC的订单总价
-    private BigDecimal totalFare;
-
-    //LCC 客户端能接受的订单总价
-    private BigDecimal confirmedPrice;
-
-    //LCC 生单时是否需要乘客护照号码的布尔标志，此参数由verify接口返回
-    private Boolean passportNoRequired;
-
-    //LCC 生单时是否需要乘客护照详细信息的布尔标志，此参数由verify接口返回
-    private Boolean passportDetailsRequired;
-
-    //LCC 此预订的最低信用卡到期日期(格式：yyyy-MM-dd’T’HH:mm:ss)，该参数由verify接口返回
-    private String expiryDateCC;
-//
-//    //LCC 航司支持的支付方式和手续费
-//    private List<PayOptions> payOptions;
-
-    //VJ(专用) 相当于data作用，用于保存后续请求需要的信息，单程长度约650个字符，往返长度为单程两倍
-    private String bookingKey;
-
-    //今通:可保存必要信息，验价时需要原值回传
-    private String data;
-
-    //币种
-    private String currency ;
-
-    public String getCurrency() {
-        return currency;
+    public String getAdultAirportTax() {
+        return adultAirportTax;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setAdultAirportTax(String adultAirportTax) {
+        this.adultAirportTax = adultAirportTax;
     }
 
-    public String getData() {
-        return data;
+    public String getChildAirportTax() {
+        return childAirportTax;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setChildAirportTax(String childAirportTax) {
+        this.childAirportTax = childAirportTax;
     }
 
-    public String getBookingKey() {
-        return bookingKey;
+    public String geteTicket() {
+        return eTicket;
     }
 
-    public void setBookingKey(String bookingKey) {
-        this.bookingKey = bookingKey;
+    public void seteTicket(String eTicket) {
+        this.eTicket = eTicket;
+    }
+
+    public String getMeal() {
+        return meal;
+    }
+
+    public void setMeal(String meal) {
+        this.meal = meal;
+    }
+
+    public String getAdultFuelCosts() {
+        return adultFuelCosts;
+    }
+
+    public void setAdultFuelCosts(String adultFuelCosts) {
+        this.adultFuelCosts = adultFuelCosts;
+    }
+
+    public String getChildFuelCosts() {
+        return childFuelCosts;
+    }
+
+    public void setChildFuelCosts(String childFuelCosts) {
+        this.childFuelCosts = childFuelCosts;
+    }
+
+    public String getKilometers() {
+        return kilometers;
+    }
+
+    public void setKilometers(String kilometers) {
+        this.kilometers = kilometers;
+    }
+
+    public String getEconomyStandardPrice() {
+        return economyStandardPrice;
+    }
+
+    public void setEconomyStandardPrice(String economyStandardPrice) {
+        this.economyStandardPrice = economyStandardPrice;
     }
 
     public String getOfficeId() {
@@ -147,14 +164,6 @@ public class Routing implements Serializable {
         this.adultAgeRestriction = adultAgeRestriction;
     }
 
-    public BigDecimal getExchange() {
-        return exchange;
-    }
-
-    public void setExchange(BigDecimal exchange) {
-        this.exchange = exchange;
-    }
-
     public String getEligibility() {
         return eligibility;
     }
@@ -179,11 +188,11 @@ public class Routing implements Serializable {
         this.forbiddenNationality = forbiddenNationality;
     }
 
-    public int getPriceType() {
+    public String getPriceType() {
         return priceType;
     }
 
-    public void setPriceType(int priceType) {
+    public void setPriceType(String priceType) {
         this.priceType = priceType;
     }
 
@@ -359,59 +368,4 @@ public class Routing implements Serializable {
         this.infantsTax = infantsTax;
     }
 
-    public String getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(String flightId) {
-        this.flightId = flightId;
-    }
-
-    public BigDecimal getTotalFare() {
-        return totalFare;
-    }
-
-    public void setTotalFare(BigDecimal totalFare) {
-        this.totalFare = totalFare;
-    }
-
-    public BigDecimal getConfirmedPrice() {
-        return confirmedPrice;
-    }
-
-    public void setConfirmedPrice(BigDecimal confirmedPrice) {
-        this.confirmedPrice = confirmedPrice;
-    }
-
-    public Boolean getPassportNoRequired() {
-        return passportNoRequired;
-    }
-
-    public void setPassportNoRequired(Boolean passportNoRequired) {
-        this.passportNoRequired = passportNoRequired;
-    }
-
-    public Boolean getPassportDetailsRequired() {
-        return passportDetailsRequired;
-    }
-
-    public void setPassportDetailsRequired(Boolean passportDetailsRequired) {
-        this.passportDetailsRequired = passportDetailsRequired;
-    }
-
-    public String getExpiryDateCC() {
-        return expiryDateCC;
-    }
-
-    public void setExpiryDateCC(String expiryDateCC) {
-        this.expiryDateCC = expiryDateCC;
-    }
-//
-//    public List<PayOptions> getPayOptions() {
-//        return payOptions;
-//    }
-//
-//    public void setPayOptions(List<PayOptions> payOptions) {
-//        this.payOptions = payOptions;
-//    }
 }

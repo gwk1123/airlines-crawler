@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,7 +20,7 @@ public class GDSSearchResponseDTO implements Serializable {
     private int status;
     private String msg;
     private String uid;
-    private ArrayList<Routing> routings;
+    private List<Routing> routings;
 
 
     public String getUid() {
@@ -46,14 +47,14 @@ public class GDSSearchResponseDTO implements Serializable {
         this.msg = msg;
     }
 
-    public ArrayList<Routing> getRoutings() {
+    public List<Routing> getRoutings() {
         if (routings == null) {
             routings = new ArrayList<Routing>();
         }
         return this.routings;
     }
 
-    public void setRoutings(ArrayList<Routing> routings) {
+    public void setRoutings(List<Routing> routings) {
         this.routings = routings;
     }
 }

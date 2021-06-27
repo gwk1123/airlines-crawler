@@ -37,6 +37,28 @@ public class Segment implements Serializable {
     private String availabilitySource;
     private Long distance;
     private Integer masterSegmentSign; //主航段标志
+    private int seatNum; //舱位数量
+    private String fareBasis; //运价基础
+
+    public String getFareBasis() {
+        return fareBasis;
+    }
+
+    public void setFareBasis(String fareBasis) {
+        this.fareBasis = fareBasis;
+    }
+
+    public void setItemNumber(int itemNumber) {
+        this.itemNumber = itemNumber;
+    }
+
+    public int getSeatNum() {
+        return seatNum;
+    }
+
+    public void setSeatNum(int seatNum) {
+        this.seatNum = seatNum;
+    }
 
     public String getCarrier() {
         return carrier;

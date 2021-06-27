@@ -136,7 +136,7 @@ public class AQController {
             routing.setAdultTax(tax);
             routing.setChildTax(tax);
             routing.setInfantsTax(tax);
-            routing.setProductType("PRV");
+            routing.setPriceType("PRV");
             routing.setReservationType(gdsSearchRequestDTO.getReservationType());
             routing.setOfficeId(gdsSearchRequestDTO.getOfficeId());
             List<Segment> segments=new ArrayList<>();
