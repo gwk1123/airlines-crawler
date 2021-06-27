@@ -44,7 +44,7 @@ public class VerifyServiceImpl {
         Double cn = ticketPrice.stream().mapToDouble(TicketPrice::getCN).sum(); //机建价格
         Double yq = ticketPrice.stream().mapToDouble(TicketPrice::getYQ).sum(); //燃油
         GDSVerifyResponseDTO gdsVerifyResponseDTO =new GDSVerifyResponseDTO();
-        gdsVerifyRequestDTO.getRouting().setAirportTax(cn.toString());
+        gdsVerifyRequestDTO.getRouting().setAdultAirportTax(cn.toString());
         gdsVerifyResponseDTO.getRouting().setAdultPrice(new BigDecimal(price));
         gdsVerifyResponseDTO.setStatus(0);
         gdsVerifyResponseDTO.setMsg("成功");

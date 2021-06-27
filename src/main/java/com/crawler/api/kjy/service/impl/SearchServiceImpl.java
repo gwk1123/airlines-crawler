@@ -63,7 +63,7 @@ public class SearchServiceImpl implements SearchService {
                 routing.setChildTax(new BigDecimal(0));
                 routing.setPriceType("PUB");
                 routing.setMeal(m.getMeal());
-                routing.setAirportTax(m.getAirportTax());
+                routing.setAdultAirportTax(m.getAirportTax());
                 routing.setEligibility(m.getETicket());
                 routing.setAdultFuelCosts(m.getFuelSurTax());
                 routing.setChildFuelCosts(m.getFuelSurTaxChd());

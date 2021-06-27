@@ -204,8 +204,8 @@ public class NHController {
         List<Routing> routings = new ArrayList<>();
         flight.getCabin().stream().filter(Objects::nonNull).forEach(e -> {
             Routing routing = new Routing();
-            routing.setProductType("PRV");
-            routing.setPriceType(0);
+//            routing.setProductType();
+            routing.setPriceType("PRV");
             routing.setAdultPrice(new BigDecimal(e.getAdultPrice()));
             routing.setAdultTax(new BigDecimal(0));
             routing.setChildPrice(new BigDecimal(e.getChildPrice()));
